@@ -29,6 +29,17 @@ a {
     margin-right: auto;
 }
 
+.line-clamp {
+    display: -webkit-box;
+    -webkit-line-clamp: var(--line-clamp, 1);
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.line-clamp.line-2 {
+    --line-clamp: 2;
+}
+
 .btn {
     display: inline-block;
     min-width: 118;
@@ -44,6 +55,28 @@ a {
 
 .btn:hover {
     opacity: 0.9;
+    cursor: pointer;
+}
+
+.heading {
+    color: #171100;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    letter-spacing: -1.16px;
+}
+
+.heading.lv1 {
+    font-size: 5.8rem;
+    line-height: 117.241%;
+}
+
+.heading.lv2 {
+    font-size: 3.8rem;
+    line-height: 126.316%;
+}
+
+.break-all {
+    word-break: break-all;
 }
 
 /* Header */
@@ -54,6 +87,12 @@ a {
 .header.fixed {
     position: sticky;
     top: -28px;
+    z-index: 1;
+    /* 
+    z-index là thuộc tính trong CSS dùng để kiểm soát thứ tự xếp chồng (stack order) của các phần tử trên trang web. Khi 
+    nhiều phần tử chồng lên nhau, giá trị z-index quyết định phần tử nào sẽ hiển thị ở phía trên hoặc phía dưới */
+
+    /* z-index: 1; đặt thứ tự ưu tiên của phần tử thành 1, nghĩa là nó sẽ nằm trên các phần tử có z-index nhỏ hơn (ví dụ: 0 hoặc giá trị mặc định). */
 }
 
 
@@ -108,7 +147,7 @@ a {
 /* --------------Hero----------- */
 
 .hero {
-    padding-top: 56px;
+    padding: 56px 0 65px;
     background: #FFFCF4;
 }
 
@@ -126,13 +165,14 @@ a {
     height: 685px;
     object-fit: cover;
     border-radius: 20px;
+    vertical-align: bottom;
 }
 
 .hero-sumary {
     position: absolute;
     right: 0;
     width: 270px;
-    padding: 28px 24px;
+    padding:24px;
     bottom: 48px;
     /* Căn theo bottom để sau này có thêm nội dung thì nó không tràn xuống */
     border-radius: 12px;
@@ -142,6 +182,7 @@ a {
 
 .hero-sumary .item {
     display: flex;
+    align-items: center;
 }
 .hero-sumary .item + .item {
     margin-top: 22px;
@@ -191,17 +232,10 @@ a {
     padding: 64px 0 0 130px;
 }
 
-.hero .heading {
-    color: #171100;
-    font-family: var(--font-heading);
-    font-size: 5.8rem;
-    font-weight: 700;
-    line-height: 117.241%;
-    letter-spacing: -1.16px;
-}
+
 
 .hero .desc {
-    margin: 22px 0;
+    margin-top: 22px;
     color: #5F5B53;
     font-size: 1.8rem;
     font-weight: 400;
@@ -212,6 +246,7 @@ a {
     display: flex;
     align-items: center;
     margin: 38px 0 48px;
+    background-color: transparent;
 }
 
 .hero-cta {
@@ -227,6 +262,7 @@ a {
     border: none;
     background: transparent;
     cursor: pointer;
+    /* cursor: pointer; trong CSS được dùng để thay đổi con trỏ chuột thành biểu tượng bàn tay chỉ khi người dùng di chuột vào phần tử cụ thể trên giao diện web. */
 }
 
 .hero .watch-video .icon {
@@ -237,7 +273,7 @@ a {
     height: 40px;
     border-radius: 50%;
     background: #ffffff;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.07);
 }
 
 .hero .watch-video span {
@@ -248,3 +284,492 @@ a {
     color: #171100;
 }
 
+.hero .stats {
+    margin: 8px 0 0 -28px;
+}
+
+
+.hero .stats strong {
+    padding:0 8px 0 28px;
+    color: #171100;
+    font-family: var(--font-heading);
+    font-size: 4.4rem;
+    font-weight: 700;
+    line-height: 122.727%;
+}
+
+/* Popular */
+
+.popular {
+    padding: 65px 0;
+    margin-top: 135px;
+}
+.popular-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.popular-top .desc {
+    width: 458px;
+    margin-top: 16px;
+    color: #5F5B53;
+    font-size: 1.8rem;
+    font-weight: 400;
+    line-height: 166.667%;
+}
+.popular .controls {
+    display: flex;
+    gap: 18px;
+    /* thuộc tính gap được sử dụng cho thẻ cha để tạo khoảng cách giữa các phần tử con bên trong. Tuy nhiên, nó
+     chỉ hoạt động khi thẻ cha là container có sử dụng display: flex, display: grid hoặc display: inline-flex/grid*/
+}
+
+
+.popular-top .control-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    background: transparent;
+    cursor: pointer;
+}
+
+.popular-top .control-btn:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+.popular .course-list {
+    display: flex;
+    gap: 30px;
+    margin-top: 55px;
+}
+
+.popular .course-item {
+    flex: 1;
+    border-radius: 12px;
+    border: 1px solid #E2DFDA;
+    background: #FFF;
+}
+
+.popular .course-item:hover {
+    border-color: transparent;
+    box-shadow: 0px 18px 36px 0px rgba(0, 0, 0, 0.05);
+}
+
+.popular .course-list .thumb {
+    width: calc(100% + 2px);
+    height: 278px;
+    padding: -1px;
+    object-fit: cover;
+    border-radius: 12px 12px 0px 0px;
+}
+
+.popular .course-item .info {
+    padding: 16px 22px 22px 22px;
+}
+.popular .course-item .rating,
+.popular .course-item .foot,
+.popular .course-item .info .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.popular .course-item .title a{
+    padding-right: 6px;
+    color: #171100;
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: 166.667%; 
+}
+
+.popular .rating .value {
+    margin-left: 6px;
+    color: #FEA31B;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 175%;
+}
+
+.popular .course-item .desc {
+    margin-top: 6px;
+    color: #5F5B53;
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 185.714% ;
+}
+
+.popular .course-item .foot {
+    margin-top: 12px;
+}
+
+.popular .course-item .price {
+    color: #171100;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.popular .course-item .book-btn {
+    border: none;
+}
+
+.popular .course-item .book-btn:hover {
+    color: #FFF;
+    background-color: var(--primary-color);
+}
+
+/* Feedback */
+
+.feeadback {
+    margin-top: 135px;
+    padding: 96px 0;
+    background: #2E2100;
+}
+
+.feedback-list {
+    display: flex;
+    overflow: hidden;
+}
+
+.feedback-item {
+    display: flex;
+    width: 100%;
+    flex-shrink: 0;
+    /* Sử dụng flex-shrink: 0; khi bạn muốn đảm bảo một phần tử không bị co lại bất kể kích thước container có thay đổi. */
+}
+
+.feedback-item .avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.feedback-item .info .title {
+    margin-top: 18px;
+    color: #F7F7F7;
+    font-family: var(--font-heading);
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 141.667%;
+}
+
+.feedback-item .info .desc {
+    margin-top: 4px;
+    color: #BFBCB2;
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 185.714%;
+}
+
+.feedback-item .dots {
+    display: flex;
+    margin-top: 28px;
+}
+
+.feedback-item .dot {
+    margin-right: 6px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #634700;
+    cursor: pointer;
+}
+
+.feedback-item .dot.active {
+    background: #FFB900;
+    cursor: default;
+}
+
+.feedback-item .content {
+    width: 66%;
+    margin-left: auto;
+}
+
+.feedback-item blockquote {
+    margin-left: 30px;
+    color: #FFF;
+    font-size: 2.6rem;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 153.846%;
+}
+
+/* Features */
+
+.features {
+    margin-top: 135px;
+    padding: 65px 0;
+}
+
+.features .body {
+    display: flex;
+    justify-content: space-between;
+}
+
+.features .images {
+    display: flex;
+    gap: 0 30px;
+}
+
+.features .images img {
+    width: 270px;
+    height: 404px;
+    border-radius: 16px;
+    object-fit: cover;
+}
+
+.features .images .lower {
+    margin-top: 30px;
+}
+
+.features .content {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.features .desc {
+    margin-top: 16px;      
+    color: #5F5B53;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 175%;
+}
+
+.features .content .cta-btn {
+    margin-top: 32px;
+    min-width: 137px;
+    color: #ffffff;
+    background-color: var(--primary-color);
+}
+
+/* Feature 2 */
+.features-2nd {
+    margin-top: 70px;
+}
+.features-2nd .body {
+    flex-direction: row-reverse;
+}
+
+.features-2nd .content {
+    width: 49%;
+}
+
+.features-2nd .images img {
+    width: 470px;
+    height: 440px;
+}
+
+/* ------Blog---------- */
+
+.blog {
+    margin-top: 135px;
+    padding: 96px 0;
+    background: #FFFCF4;
+}
+
+.blog .blog-top {
+    text-align: center;
+}
+
+.blog .blog-top .desc {
+    margin: 16px auto 0;
+    color: #696262;
+    width: 448px;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 175%;
+}
+
+.blog .blog-list {
+    display: flex;
+    gap: 30px;
+    margin-top: 55px;
+    overflow: hidden;
+}
+
+.blog .item {
+    flex-shrink: 0;
+    width: calc(33.33% - 20px);
+    border-radius: 16px;
+    background: #FFF;
+}
+
+.blog .item:hover {
+    box-shadow: 0px 16px 32px 0px rgba(0, 0, 0, 0.05);
+}
+
+.blog .item .thumb {
+    width: 100%;
+    border-radius: 16px 16px 0px 0px;
+    width: 370px;
+    height: 250px;
+    object-fit: cover;
+}
+
+.blog .item .info {
+    padding: 20px 20px 28px;
+}
+
+.blog .item .date {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding-bottom: 12px;
+    color: #5F5B53;
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 185.714%; 
+}
+
+.blog .item .date::before {
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin-right: 4px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+}
+
+.blog .item .date::after {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: -27px;
+    content: "";
+    display: inline-block;
+    height: 1px;
+    border-radius: 0.5px;
+    background: #E2DFDA;
+}
+
+.blog .item .title a{
+    display: inline-block;
+    margin: 12px 0 12px;
+    color: #171100;
+    font-size: 1.6rem;
+    font-weight: 600;
+    line-height: 175% ; 
+}
+
+.blog .item .btn {
+    font-size: 1.4rem;
+}
+
+.blog .item .btn:hover {
+    background-color: var(--primary-color);
+}
+
+.blog .dots {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    margin-top: 38px;
+}
+
+.blog .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #5F5B53;
+    cursor: pointer;
+}
+
+.blog .dot.active {
+    cursor: default;
+    background-color: var(--primary-color);
+}
+
+/* Footer */ 
+
+.footer {
+    background: #2E2100;
+    padding: 96px 135px 0;
+}
+
+.footer .row {
+    display: flex;
+    padding-bottom: 38px;
+    border-bottom: 1px solid #BFBCB2;
+}
+
+.footer .row .column {
+    width: 21.6%;
+}
+
+.footer .row .column:first-child {
+    width: 35%;
+}
+
+.footer .desc {
+    color: #BFBCB2;
+    margin-top: 18px;
+    max-width: 267px;
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 185.714%; 
+}
+
+.footer .socials {
+    display: flex;
+    gap: 18px;
+    margin-top: 18px;
+}
+
+.footer .title {
+    display: inline-block;
+    padding: 0 48px 14px 0;
+    border-bottom: 1px solid #59554b;
+    color: #FFF;
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 175% ;
+}
+
+.footer .list {
+    margin-top: 28px;
+}
+
+.footer .list a {
+    display: inline-block;
+    margin-bottom: 12px;
+    color: #BFBCB2;
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 185.714%;
+}
+
+.footer .list li:last-child a {
+    margin-bottom: 0;
+}
+
+.footer .list a strong {
+    color: #FFF;
+    font-size: 1.4rem;
+    font-weight: 600;
+    line-height: 185.714%;
+}
+
+.footer .copy-right {
+    padding: 28px 0;
+}
+
+.footer .copy-right p {
+    font-size: 1.4rem;
+    line-height: 1.86;
+    text-align: center;
+    color: #807d74;
+}
